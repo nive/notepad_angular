@@ -1,0 +1,50 @@
+
+<div class="row search-area" ng-show="notes.length > 1">
+    <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+            <div class="input-group" ng-class="authError ? 'has-error' : ''">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                <input type="search" placeholder="filter notes" ng-model="noteFilter" class="form-control">
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-show="notes.length" class="row">
+    <div class="col-md-4 note" ng-repeat="note in notes | filter:noteFilter">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <time><i class="glyphicon glyphicon-calendar"></i>  {{note.timestamp*1000 | date:'MMM dd. y HH:mm:ss'}}</time>
+            </div>
+            <div class="panel-body note-body">
+                <span ng-show="!editing" ng-click="editing = true">{{note.value}}</span>
+                <textarea autofocus ng-model="note.value" ng-show="editing" class="form-control" rows="2"></textarea>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <button ng-click="editing = true" ng-show="!editing" class="btn btn-xs btn-info">edit</button>
+                    <button ng-click="remove(note)" ng-show="!editing" class="btn btn-xs btn-danger">remove</button>
+                    <button ng-click="update(note); editing = false" ng-show="editing" class="btn btn-xs btn-success">save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning" role="alert" ng-show="!notes.length">
+    <strong>Warning!</strong> No notes yet. Why not adding some?
+</div>
+<div class="row add-note">
+    <div class="col-sm-6 col-md-4">
+        <h2 class="page-header">Add a new note</h2>
+        <form ng-submit="add(note)">
+            <div class="form-group">
+                <textarea class="form-control" ng-model="note.text" rows="4" placeholder="Enter your new note here"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">add</button>
+            </div>
+        </form>
+    </div>
+</div>

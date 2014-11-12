@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<!--
+Use this app for testing/dev without actual backend. Use mocks instead. App below MUST be removed
+
+<html ng-app="niveNotepadDev">
+-->
+
+<html ng-app="niveNotepad">
+<head>
+    <title>Nive Angular Notepad Example</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+
+    <!-- Custom styles -->
+    <link href="styles/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand">Nive Notepad - Angular</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a ng-href="#/">Notes</a></li>
+                    <li><a ng-href="#/profile">Profile</a></li>
+                    <li><a ng-href="#/signout">Signout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" role="main" ng-view>App is starting...</div>
+
+    <script src="/vendor/nive/endpoint-0.7.1.js"></script>
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular-route/angular-route.js"></script>
+    <script src="/vendor/angular-nive/angular-nive-0.7.0.js"></script>
+
+    <!--
+
+    Include these files for testing the app with mock backend (no Nive backend needed)
+
+    <script src="/vendor/angular-mocks/angular-mocks.js"></script>
+    <script src="/app/app-mock-backend.js"></script>
+
+    -->
+
+    <script src="/app/app.js"></script>
+</body>
+</html>

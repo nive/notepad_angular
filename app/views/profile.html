@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <form ng-submit="updateProfile()" class="form-signin" role="form">
+            <h2 class="form-signin-heading">Profile</h2>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                    <input class="form-control input-lg" type="text" placeholder="Real name" autofocus required ng-model="profile.realname">
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Update Profile</button>
+            </div>
+        </form>
+        <form ng-submit="updatePassword()" name="passwordForm" class="form-signin" role="form">
+            <h2 class="form-signin-heading">Update Password</h2>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+                    <input class="form-control input-lg" name="password" type="password" placeholder="old password" required ng-model="password.password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                    <input class="form-control input-lg" type="password" name="newPassword" placeholder="new password" required ng-minlength="6" ng-model="password.newpassword">
+                </div>
+                <span class="help-block" ng-show="passwordForm.newPassword.$error.minlength">Too short!</span>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                    <input class="form-control input-lg" type="password" name="newPasswordConfirm" placeholder="confirm new password" required ng-model="password.confirm" match="password.newPassword">
+                </div>
+                <span class="help-block with-errors" ng-show="passwordForm.newPasswordConfirm.$error.match">Passwords don`t match</span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Update Password</button>
+            </div>
+        </form>
+    </div>
+</div>

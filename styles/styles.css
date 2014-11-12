@@ -1,0 +1,14 @@
+
+.navbar{
+    margin-bottom: 50px;
+}
+.note-body{
+    height: 100px;
+    overflow-y: auto;
+}
+.search-area{
+    padding-bottom: 35px
+}
+.add-note{
+    padding-bottom: 30px;
+}

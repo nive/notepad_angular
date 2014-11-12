@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <form ng-submit="signIn()" class="form-signin" role="form">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <div class="alert alert-danger" role="alert" ng-show="authError">
+                <strong>Login failed!</strong> check your credentials!
+            </div>
+            <div class="form-group">
+                <div class="input-group" ng-class="authError ? 'has-error' : ''">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                    <input class="form-control input-lg" type="text" placeholder="E-Mail / Username" autofocus required ng-model="credentials.identity">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group" ng-class="authError ? 'has-error' : ''">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+                    <input class="form-control input-lg" type="password" placeholder="Password" required ng-model="credentials.password">
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </div>
+        </form>
+    </div>
+</div>

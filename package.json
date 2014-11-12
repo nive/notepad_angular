@@ -1,0 +1,13 @@
+{
+  "name": "NiveAngularaNotepad",
+  "version": "1.0.0",
+  "description": "Nive notepad demo app using angular-nive",
+  "author": "Michael Rutzer",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.9",
+    "gulp-eslint": "^0.1.8",
+    "gulp-load-plugins": "^0.7.1",
+    "gulp-webserver": "^0.8.7"
+  }
+}
