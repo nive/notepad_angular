@@ -17,6 +17,11 @@
                 templateUrl: 'app/views/login.html',
                 controller: 'AuthCtrl'
             })
+            .when('/signup', {
+                templateUrl: 'app/views/signup.html',
+                controller: 'SignupCtrl',
+                authReq: false
+            })
             .when('/profile', {
                 templateUrl: 'app/views/profile.html',
                 controller: 'ProfileCtrl',
@@ -32,7 +37,7 @@
         $httpProvider.interceptors.push('HttpInterceptor');
     })
     .run(function($rootScope, $location) {
-        $rootScope.isAuthenticated = false;
+        $rootScope.isAuthenticated = null;
         $rootScope.$on('$routeChangeStart', function(e, next) {
             if(!$rootScope.isAuthenticated && next.authReq) {
                 $location.path('/login').replace();
@@ -89,7 +94,7 @@
 
         // sign out if signout path called
         if(new RegExp(/(signout)/).test($location.path())) {
-            NiveUser.signOut().then(function() {
+            NiveUser.signout().then(function() {
                 $rootScope.isAuthenticated = false;
             });
         }
@@ -105,7 +110,7 @@
         }
 
         $scope.signIn = function() {
-            NiveUser.signIn($scope.credentials).then(
+            NiveUser.signin($scope.credentials).then(
                 function(res) {
                     // clear credentials to clear login inputs
                     $scope.credentials = {};
@@ -132,7 +137,7 @@
     notepad.controller('NotesCtrl', function($scope, Notes, NOTES) {
 
         // notes
-        $scope.notes = [];
+        $scope.notes = null;
 
         // load stored notes initially and assign result to $scope
         loadList();
@@ -169,10 +174,35 @@
 
         $scope.updateProfile = function() {
             NiveUser.profile($scope.profile);
-        }
+        };
 
         $scope.updatePassword = function() {
             NiveUser.updatePassword($scope.password);
+        }
+    });
+
+    notepad.controller('SignupCtrl', function($scope, $rootScope, NiveUser) {
+        $scope.showForm=true;
+        $scope.messages=[];
+        $scope.invalid=null;
+
+        $scope.createProfile = function() {
+            $scope.messages=[];
+            NiveUser.signup($scope.user).then(function(result) {
+                if(!result.result) {
+                    // failed
+                    $scope.messages = result.messages;
+                    if(result.invalid) {
+                        if(!$scope.messages) $scope.messages.push("Sorry, an error occured!");
+                        angular.forEach(result.invalid, function(field, key) {
+                          $scope.messages.push(field[0] + ': ' + field[1]);
+                        });
+                    }
+                } else {
+                    $scope.messages = result.messages;
+                    $scope.showForm = false;
+                }
+            });
         }
     });
 
