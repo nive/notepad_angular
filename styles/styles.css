@@ -12,3 +12,9 @@
 .add-note{
     padding-bottom: 30px;
 }
+.panel {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  background-color: #FFFFFF;
+}
