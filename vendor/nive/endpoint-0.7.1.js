@@ -29,7 +29,7 @@ nive.endpoint.widgetUrl = function (options) {
 nive.endpoint.EndpointException = function (message) {
    this.message = message;
    this.name = "EndpointException";
-}
+};
 
 
 nive.endpoint.__makeUrl = function (options) {
@@ -53,7 +53,7 @@ nive.endpoint.__makeUrl = function (options) {
   }
 
   // version
-  var version = options.version;
+  var version = options.version || "api";
 
   // method
   var method = options.method;
